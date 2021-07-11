@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1><b>Analyze The Sentiment Of Text</b></h1>
+
+    </header>
+    <div class="container">
+        <div class="ml-container">
+
+            <form action="{{ url_for('predict')}}" method="POST">
+                <div class="mt-5">
+                    <textarea name="text" class="form-control" id="exampleFormControlTextarea4"
+                        placeholder="Enter your text here..." rows="4" cols="100"></textarea>
+                </div>
+                <!-- <input class="example_a" type="submit"> -->
+                <div class="center">
+                    <button type="submit" class="btn btn-warning my-2 font-weight-bold">Analyze Text</button>
+                </div>
+            </form>
+
+        </div>
+
+        {% if sentiment==1%}
+        <br><b>Your text :</b> {{text}}<br><br>
+        <h4>Sentiment: <span style="color:rgba(0, 128, 53, 0.952)">POSITIVE</span></h4><br>
+        <progress class="positive-progress" max="100" value= {{score}} ></progress>
+        <h5 class="center"><b>Positivity Score</b>:<span style="color:rgba(0, 128, 53, 0.952)"> <b>{{score}}</b></span></h5><br>
+        
+        {% elif sentiment==0%}
+        <br>Your text : {{text}}<br><br>
+        <h4>Sentiment:<span style="color:red"> NEGATIVE</span></h4><br>
+        <progress class="negative-progress" max="100" value= {{score}} ></progress>
+        <h5 class="center"><b>Negativity Score</b>:<span style="color:red"> <b>{{score}}</b></span></h5><br>
+        
+        
+        
+        {% endif %}
+        
+        <div class="footer fixed-bottom footer-style  center">
+            <div style="margin-top: 6px;" class="font-weight-bold">
+                Machine Learning Web Application Using Flask
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

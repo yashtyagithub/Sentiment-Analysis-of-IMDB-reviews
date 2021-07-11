@@ -1,0 +1,64 @@
+body {
+	font: 15px/1.5 Arial, Helvetica, sans-serif;
+	padding: 0px;
+	background-color: powderblue;
+  }
+  
+  header {
+	background: #03a9f4;
+	border-bottom: #448aff 3px solid;
+	height: 100px;
+	width: 100%;
+	padding-top: 30px;
+  }
+  
+  header h1 {
+	text-align: center;
+	color: rgb(255, 255, 255);
+  }
+  .center {
+	margin: auto;
+	text-align: center;
+  }
+ .positive-progress{
+	 text-align: center;
+	 width: 100%;
+	 height: 20px;
+	 border: 1px ;
+	 overflow: hidden;
+	 color: rgba(0, 128, 53, 0.952);
+	 border-radius: 15px;
+	}
+
+.positive-progress::-webkit-progress-bar{
+	background:skyblue ;
+}
+.positive-progress::-webkit-progress-value{
+	background:rgba(0, 128, 53, 0.952);
+}
+.positive-progress::-moz-progress-bar{
+	background:rgba(0, 128, 53, 0.952);
+}
+.negative-progress{
+	width: 100%;
+	height: 20px;
+	border: 1px;
+	overflow: hidden;
+	color:red;
+	border-radius: 15px
+   }
+
+.negative-progress::-webkit-progress-bar{
+   background:skyblue ;
+}
+.negative-progress::-webkit-progress-value{
+   background:red;
+}
+.negative-progress::-moz-progress-bar{
+   background:red;
+}
+  .footer-style {
+	background-color: #03a9f4;
+	height: 40px;
+	margin: auto;
+  }
