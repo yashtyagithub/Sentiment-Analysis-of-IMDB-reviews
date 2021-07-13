@@ -5,23 +5,35 @@
 # Sentiment-Analysis-of-IMDB-reviews
 ## Overview 
 Sentiment analysis is one of the  natural language processing technique used to determine the subjective opinions or feelings collected from various sources about a particular subject. Business ofter use sentiment analysis tools to determine to understand how customer feel about their product. In this projuct machine learning and deep learning models are trained on huge [IMDB dataset](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)  and  then best model is used to create a web appliction using flask to determine the sentiment of text given by the user.
+ 
+ ## Table of content
+ <!--ts-->
+  * [Dataset](#dataset)
+  * [Preprocessing](#preprocessing)
+  * [Machine learning models](#machine-learning-models)
+  * [LSTM Model](#lstm-model)
+  * [BERT Model](#bert-model)
+  * [Accuracy of different models on test dataset](#accuracy-of-different-models-on-test-dataset)
+  * [Web Application using flask](#web-application-using-flask)
+ <!--te-->
   
 ## Dataset
 The [IMDB dataset](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews) consists of 50,000 movie or tv shows reviews from IMDB userd that are labeled as positive oe negative. The number of positive and negative reviews in the dataset are equal i.e 25000 positive reviews and 25000 negative reviews. 
 
-## Machine Leaning Models
+## Preprocessing
+  1. lower the reviews 
+  2. remove punctuations from reviews 
+  3. remove HTML tags from reviews
+  4. remove extra spaces from reviews 
+  5. remove numbers from reviews  
+  6. remove special character from reviews 
+
+## Machine Learning Models
 * **Steps before applying models**
   
-  * Preprocessing: 
-    1. lower the reviews 
-    2. remove punctuations from reviews 
-    3. remove HTML tags from reviews
-    4. remove extra spaces from reviews 
-    5. remove numbers from reviews  
-    6. remove special character from reviews 
-    7. remove stopwords from the reviews
+ * Remove stop words that are define in nltk library
   
-  * Tokenization
+ * Tokenization
     1. represent reviews as a collections of words or tokens.
     2. perform stemming on the tokens.
   
@@ -45,20 +57,12 @@ The [IMDB dataset](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-mo
 
 ## LSTM Model
  
-  
  * Deep learning text classification model  architectures generally consist of the following components connected in sequence
   
   ![deep learning](https://user-images.githubusercontent.com/50082770/125319351-505f9280-e358-11eb-9ccf-c04bbf9b8558.png)
   
- * Preprocessing: 
-    1. lower the reviews 
-    2. remove punctuations from reviews 
-    3. remove HTML tags from reviews
-    4. remove extra spaces from reviews 
-    5. remove numbers from reviews  
-    6. remove special character from reviews 
-    7. remove stopwords from the reviews
-
+ * Remove stop words that are define in nltk library
+ 
  * Reviews are first encoded so that each word is represented by a unique integer by using  tensorflow keras tokenizer and then we make all the review vectors equal to length 128 by     adding padding to  review vectors or by truncating the review vectors.
   
  * **First method** : In the tensorflow keras LSTM  model, embedding layer is the first hidden layer and that layer is initialized with random weights and will learn an embedding for    all of the words in the training dataset during training of the model. 
@@ -75,19 +79,10 @@ The [IMDB dataset](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-mo
  * All the points mentioned above performed in this [jupyter notebook](https://github.com/yashtyagithub/Sentiment-Analysis-of-IMDB-reviews/blob/master/LSTM.ipynb)
   
 ## BERT Model
-  * BERT stands for Bidirectional Encoder Representations from Transformers and it is a state-of-the-art deep learning model used for NLP tasks.
+ * BERT stands for Bidirectional Encoder Representations from Transformers and it is a state-of-the-art deep learning model used for NLP tasks.
   
-  * We use DistilBert in this project. DistillBert is a small, fast, cheap and ligh Transformer model trained by distilling BERT base. It has 40% less parameters than bert-base-        uncased , runs 60% faster while preserving over 95% of BERT's performances
+ * We use DistilBert in this project. DistillBert is a small, fast, cheap and ligh Transformer model trained by distilling BERT base. It has 40% less parameters than bert-base-          uncased , runs 60% faster while preserving over 95% of BERT's performances
   
-  * Preprocessing: 
-    1. lower the reviews 
-    2. remove punctuations from reviews 
-    3. remove HTML tags from reviews
-    4. remove extra spaces from reviews 
-    5. remove numbers from reviews  
-    6. remove special character from reviews 
-    7. remove stopwords from the reviews 
- 
  * Using the Distilbert tokenizer to give the numerical representation to each word such that it can be provided to distilbert model.
   
  * Configure the loaded DistilBert model and train for fine-tunning.
@@ -103,6 +98,17 @@ The [IMDB dataset](https://www.kaggle.com/lakshmi25npathi/imdb-dataset-of-50k-mo
   ![model vs accuracy](https://user-images.githubusercontent.com/50082770/125339815-53b24880-e36f-11eb-89ed-79376f8b2cb8.png)
  
   **DistilBert** have highest accuracy of 0.89 on test dataset. 
+
+## Web Application using flask
+ * Using DistillBert model and flask to create a web application
+ 
+ * Model is trained on IMDB review dataset so it can easily detect the sentiment of reviews about any movie or TV shows. But it can also able to detect sentiment of any text, so I      make a web application which user can use to detect the sentiment of any text
+ 
+ * Implementation of [flask](https://github.com/yashtyagithub/Sentiment-Analysis-of-IMDB-reviews/blob/master/application.py)
+ 
+![positive](https://user-images.githubusercontent.com/50082770/125469867-7864f3b3-29b4-451b-9197-614f88746e57.png)
+___
+![negative](https://user-images.githubusercontent.com/50082770/125469939-10d06f8a-96fa-4346-a3de-b172a3af5b62.png)
 
   
   
